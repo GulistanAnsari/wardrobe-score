@@ -30,34 +30,35 @@
 		<img src="img/banner.jpg" width="" height="" alt="" class="img-fluid" />
 		<div class="container">
 			<div class="banner-text position-absolute">
-				<div class="first-text">
+				<div id="first-text" class="first-text">
 					<h1>WHAT’S YOUR <br>WARDROBE SCORE?</h1>
 					<p>A 60-second test to discover your style personality.</p>
 
 					<div>
-						<a  class="btn start-btn">START THE TEST</a>
+						<a id="show-q" class="btn start-btn">START THE TEST</a>
 						<p class="mt-3">And unlock a store reward.</p>
 					</div>
 				</div>
-				<div class="qustions" style="display: none;">
+				<div id="qustions" class="qustions" style="display: none;">
+					
 					<!-- q1 start -->
 					<div class="slide active">
 						<h3><span class="number">1.</span> HOW OFTEN DO YOU REPEAT OUTFITS?</h3>
 						<form>
 							<label>
-								<input type="radio" name="Q_1" value=""/>
+								<input type="radio" name="Q_1" value="20"/>
 								<span>Rarely</span>
 							</label>
 							<label>
-								<input type="radio" name="Q_1" value=""/>
+								<input type="radio" name="Q_1" value="35"/>
 								<span>Often</span>
 							</label>
 							<label>
-								<input type="radio" name="Q_1" value=""/>
+								<input type="radio" name="Q_1" value="15"/>
 								<span>Sometimes</span>
 							</label>
 							<label>
-								<input type="radio" name="Q_1" value=""/>
+								<input type="radio" name="Q_1" value="30"/>
 								<span>I repeat my favourites all the time</span>
 							</label>
 						</form>
@@ -154,9 +155,10 @@
 							</label>
 						</form>
 					</div>
-					<a class="btn" id="prev">Previous</a>
+
+					<a class="btn" id="prev" style="display: none;">Previous</a>
 					<a class="btn" id="next">Next</a>
-					<a class="btn" id="result">Show Result</a>
+					<a class="btn" id="result" style="display: none;">Show Result</a>
 					
 				</div>
 			</div>
