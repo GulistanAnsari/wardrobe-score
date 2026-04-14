@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Wardrobe Score </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- Fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+  </head>
+    
+  <body>
+	<header>
+		<div class="container">
+			<nav class="row">
+				<div class="col-6">
+					<img src="img/logo.png" width="" height="" alt="" />
+				</div>
+				<div class="col-6 text-end">
+					<img src="img/logo-india.png" width="" height="" alt="" />
+				</div>
+			</nav>
+		</div>
+	</header>
+
+	<section class="banner position-relative">
+		<img src="img/banner.jpg" width="" height="" alt="" class="img-fluid" />
+		<div class="container">
+			<div class="banner-text position-absolute">
+				<div class="first-text">
+					<h1>WHAT’S YOUR <br>WARDROBE SCORE?</h1>
+					<p>A 60-second test to discover your style personality.</p>
+
+					<div>
+						<a  class="btn start-btn">START THE TEST</a>
+						<p class="mt-3">And unlock a store reward.</p>
+					</div>
+				</div>
+				<div class="qustions" style="display: none;">
+					<!-- q1 start -->
+					<div class="slide active">
+						<h3><span class="number">1.</span> HOW OFTEN DO YOU REPEAT OUTFITS?</h3>
+						<form>
+							<label>
+								<input type="radio" name="Q_1" value=""/>
+								<span>Rarely</span>
+							</label>
+							<label>
+								<input type="radio" name="Q_1" value=""/>
+								<span>Often</span>
+							</label>
+							<label>
+								<input type="radio" name="Q_1" value=""/>
+								<span>Sometimes</span>
+							</label>
+							<label>
+								<input type="radio" name="Q_1" value=""/>
+								<span>I repeat my favourites all the time</span>
+							</label>
+						</form>
+					</div>
+
+					<!-- q2 start -->
+					<div class="slide">
+						<h3><span class="number">2.</span> WHEN BUYING CLOTHES, WHAT MATTERS MOST?</h3>
+						<form>
+							<label>
+								<input type="radio" name="Q_2" value=""/>
+								<span>Rarely</span>
+							</label>
+							<label>
+								<input type="radio" name="Q_2" value=""/>
+								<span>Often</span>
+							</label>
+							<label>
+								<input type="radio" name="Q_2" value=""/>
+								<span>Sometimes</span>
+							</label>
+							<label>
+								<input type="radio" name="Q_2" value=""/>
+								<span>I repeat my favourites all the time</span>
+							</label>
+						</form>
+					</div>
+
+					<!-- q3 start -->
+					<div class="slide">
+						<h3><span class="number">3.</span> WHEN BUYING CLOTHES, WHAT MATTERS MOST?</h3>
+						<form>
+							<label>
+								<input type="radio" name="Q_3" value=""/>
+								<span>Rarely</span>
+							</label>
+							<label>
+								<input type="radio" name="Q_3" value=""/>
+								<span>Often</span>
+							</label>
+							<label>
+								<input type="radio" name="Q_3" value=""/>
+								<span>Sometimes</span>
+							</label>
+							<label>
+								<input type="radio" name="Q_3" value=""/>
+								<span>I repeat my favourites all the time</span>
+							</label>
+						</form>
+					</div>
+
+					<!-- q4 start -->
+					<div class="slide">
+						<h3><span class="number">4.</span> WHEN BUYING CLOTHES, WHAT MATTERS MOST?</h3>
+						<form>
+							<label>
+								<input type="radio" name="Q_4" value=""/>
+								<span>Rarely</span>
+							</label>
+							<label>
+								<input type="radio" name="Q_4" value=""/>
+								<span>Often</span>
+							</label>
+							<label>
+								<input type="radio" name="Q_4" value=""/>
+								<span>Sometimes</span>
+							</label>
+							<label>
+								<input type="radio" name="Q_4" value=""/>
+								<span>I repeat my favourites all the time</span>
+							</label>
+						</form>
+					</div>
+
+					<!-- q5 start -->
+					<div class="slide">
+						<h3><span class="number">5.</span> WHEN BUYING CLOTHES, WHAT MATTERS MOST?</h3>
+						<form>
+							<label>
+								<input type="radio" name="Q_5" value=""/>
+								<span>Rarely</span>
+							</label>
+							<label>
+								<input type="radio" name="Q_5" value=""/>
+								<span>Often</span>
+							</label>
+							<label>
+								<input type="radio" name="Q_5" value=""/>
+								<span>Sometimes</span>
+							</label>
+							<label>
+								<input type="radio" name="Q_5" value=""/>
+								<span>I repeat my favourites all the time</span>
+							</label>
+						</form>
+					</div>
+					<a class="btn" id="prev">Previous</a>
+					<a class="btn" id="next">Next</a>
+					<a class="btn" id="result">Show Result</a>
+					
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="container-fluid p-0">
+			<div class="row m-0 ">
+				<div class="col-sm-6 p-0 score">
+					<div class="score-card">
+						<div>
+							<img src="img/score-card.png" class="img-fluid" width="" height="" alt="" />
+							<div  class="top-sec position-absolute ">
+								<h3>YOUR WARDROBE <br>SCORE:</h3>
+							</div>
+							<div class="middle-sec position-absolute ">
+								<span class="answer">83</span>
+							</div>
+							<div class="bottom-sec position-absolute "><h3>YOU ARE A <br><b>FAIR & SQUARE <br>MAN</b></h3>
+							<p>You choose consciously and value clothing that lasts longer and is made responsibly.</p></div>
+						</div>
+						<a class="btn mt-4" >SHARE ON INSTAGRAM</a>
+					</div>
+					
+				</div>
+				<div class="col-sm-6 p-0">
+					<img src="img/footer-right.jpg" class="img-fluid" width="" height="" alt="" />
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script> -->
+  <script src="js/main.js"></script>
+</html>
