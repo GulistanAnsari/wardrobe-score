@@ -3,26 +3,13 @@ $(document).ready(function () {
   let current = 0;
   let slides = $(".slide");
 
-  // Start button
-  $("#show-q").click(function () {
-    $("#first-text").hide();
-    $("#qustions").fadeIn();
-    showSlide(current);
-  });
-
   function showSlide(index) {
     slides.hide().eq(index).fadeIn();
 
     $("#error-msg").hide();
 
-    // Previous button
-    if (index === 0) {
-      $("#prev").hide();
-    } else {
-      $("#prev").show();
-    }
+    $("#prev").toggle(index !== 0);
 
-    // Next / Result button
     if (index === slides.length - 1) {
       $("#next").hide();
       $("#result").show();
@@ -32,8 +19,25 @@ $(document).ready(function () {
     }
   }
 
-  // Next
+  $("#show-q").click(function () {
+
+    $("input[type=radio]").prop("checked", false);
+    $("#answer").text("00");
+    $("#type").text("---------");
+    $("#reward").text("---------");
+    $("#ruppee").text("₹0"); 
+    $("#error-msg").hide();
+
+    current = 0;
+
+    $("#first-text").hide();
+    $("#qustions").fadeIn();
+
+    showSlide(current);
+  });
+
   $("#next").click(function () {
+
     let selected = slides.eq(current).find("input:checked").length;
 
     if (selected === 0) {
@@ -45,19 +49,23 @@ $(document).ready(function () {
     showSlide(current);
   });
 
-  // Previous
   $("#prev").click(function () {
     current--;
     showSlide(current);
   });
 
-  // Hide error on select
   $("input[type=radio]").change(function () {
     $("#error-msg").fadeOut();
   });
 
-  // RESULT + RESET
   $("#result").click(function () {
+
+    let selected = slides.eq(current).find("input:checked").length;
+
+    if (selected === 0) {
+      $("#error-msg").text("Please select an option").fadeIn();
+      return;
+    }
 
     let total = 0;
 
@@ -65,56 +73,58 @@ $(document).ready(function () {
       total += parseInt($(this).val());
     });
 
-    // Show score
     $("#answer").text(total);
 
-    // Scroll to result
+    let resultText = "---------";
+    let rewardText = "---------";
+    let amountText = "₹0"; 
+
+    if (total >= 30 && total <= 49) {
+      resultText = "Trend chaser";
+      rewardText = "Trend chaser reward";
+      amountText = "₹150";
+    } 
+    else if (total >= 50 && total <= 64) {
+      resultText = "Sale printer";
+      rewardText = "Sale printer reward";
+      amountText = "₹250";
+    } 
+    else if (total >= 65 && total <= 79) {
+      resultText = "Balanced styler";
+      rewardText = "Balanced styler reward";
+      amountText = "₹350";
+    } 
+    else if (total >= 80 && total <= 100) {
+      resultText = "FAIR & SQUAR MAN";
+      rewardText = "Fair & Square reward";
+      amountText = "₹500";
+    }
+
+    $("#type").text(resultText);
+    $("#reward").text(rewardText);
+    $("#ruppee").text(amountText); 
+
     $("html, body").animate({
       scrollTop: $(".score").offset().top
     }, 600);
 
-    // ⏳ After 2 sec → Reset everything
     setTimeout(function () {
 
-      // Clear all radio selections
       $("input[type=radio]").prop("checked", false);
-
-      // Reset index
       current = 0;
 
-      // Hide questions & show first screen
       $("#qustions").hide();
       $("#first-text").fadeIn();
 
-      // Reset buttons state
       $("#next").show();
       $("#result").hide();
       $("#prev").hide();
 
-      // Optional: reset score text
-      // $("#answer").text("0");
-
-    }, 2000); // change time if needed
-
+    }, 2000);
   });
-    $("#show-q").click(function () {
 
-      // Reset score
-      $("#answer").text("00");
-
-      // Reset radio buttons
-      $("input[type=radio]").prop("checked", false);
-
-      // Reset question index
-      current = 0;
-
-      $("#first-text").hide();
-      $("#qustions").fadeIn();
-
-      showSlide(current);
-    });
-
-    $("#share-instagram").click(function () {
+  $("#share-instagram").click(function () {
     window.open("https://www.instagram.com/", "_blank");
   });
+
 });
