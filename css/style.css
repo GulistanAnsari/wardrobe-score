@@ -41,6 +41,7 @@ nav img{
   top: 47%;
   bottom: 0;
   transform: translateY(-50%);
+  width: 50%;
 }
 .banner-text h1{
   font-size: 75px;
@@ -91,7 +92,7 @@ label input:checked + span:before {
 label span {
  display: flex;
   align-items: center;
-  padding: 5px 30px;
+  padding: 5px 0px 5px 30px;
   border-radius: 0;
   transition: 0.25s ease;
   width: 100%;
@@ -116,13 +117,18 @@ label span:before {
   transition: 0.25s ease;
   box-shadow: inset 0 0 0 2px #42210b;
 }
-
+.error{
+  color: red;
+  font-size: 16px !important;
+  margin-top: 0;
+}
 .slide{
   display: none;
 }
 .slide.active{
   display: block;
 }
+
 .score{
   background: #D8D1BF;
   background: linear-gradient(155deg,rgba(216, 209, 191, 1) 0%, rgba(214, 203, 181, 1) 100%);
@@ -160,4 +166,70 @@ label span:before {
 .bottom-sec p{
   font-size: 14px;
   font-weight: 500;
+}
+
+.square-reward{
+  background: rgb(109 74 46 / 90%);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 80%;
+  height: 80%;
+  padding: 30px 55px;
+  color: #fff;
+}
+.reward{
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+}
+.square-reward p a{
+  color: #f8f702;
+  text-decoration: none;
+}
+.border-div{
+  border: 1px solid #bc8943;
+  border-radius: 20px;
+  display: inline-block; 
+  padding: 20px 60px 20px 60px;
+}
+.ruppee{
+  display: block;
+  font-size: 80px;
+  line-height: 1;
+}
+.free{
+  background: #E1A84F;
+  background: linear-gradient(90deg, rgba(225, 168, 79, 1) 0%, rgba(226, 169, 79, 1) 50%, rgba(225, 168, 79, 1) 100%);
+  border-radius: 20px;
+  display: inline-block;
+  padding: 10px 35px;
+  margin-bottom: 20px;
+  position: relative;
+}
+.free::before{
+  content: "";
+  border: 1px dashed #f8f702;
+  position: absolute;
+  width: 98%;
+  height: 96%;
+  left: 1%;
+  right: 1%;
+  top: 2%;
+  bottom: 1%;
+  border-radius: 20px;
+  opacity: 0.7
+}
+.free h4{
+  font-size: 26px;
+  color: #42210b;
+  font-weight: 600;
+}
+.free p{
+  color: #42210b;
+}
+.icons img{
+  width: 25px;
 }
