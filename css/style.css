@@ -21,6 +21,10 @@ h6,
   text-transform: uppercase;
 }
 
+.hide-desktop {
+  display: none;
+}
+
 .btn {
   background: #42210b;
   color: #fff;
@@ -39,6 +43,10 @@ h6,
 /* header */
 header {
   background: #fff;
+  /* position: fixed; */
+  width: 100%;
+  z-index: 9;
+  top: 0;
 }
 
 nav {
@@ -46,14 +54,24 @@ nav {
 }
 
 nav img {
-  width: 70px;
+  width: 55px;
 }
 
+.banner {
+  /* height: 100vh; */
+  /* overflow: hidden; */
+  background: #cfc7b4;
+}
+
+/* .banner-img{
+  height: 100vh;
+  width: 100%;
+} */
 .banner-text {
-  top: 47%;
-  bottom: 0;
-  transform: translateY(-50%);
-  width: 53%;
+  /* top: 50%; */
+  /* bottom: 0; */
+  /* transform: translateY(-50%); */
+  width: 50%;
 }
 
 .banner-text h1 {
@@ -152,6 +170,13 @@ label span:before {
   display: block;
 }
 
+.result-page {
+  /* margin-top:10vh ; */
+  /* height: 90vh; */
+  /* overflow: hidden; */
+  display: none;
+}
+
 .score {
   background: #D8D1BF;
   background: linear-gradient(155deg, rgba(216, 209, 191, 1) 0%, rgba(214, 203, 181, 1) 100%);
@@ -159,12 +184,12 @@ label span:before {
 }
 
 .score-card {
-  max-width: 350px;
+  max-width: 340px;
   text-align: center;
-  position: absolute;
-  top: 30px;
+  /* position: absolute;
+  top: 40px;
   left: 0;
-  right: 0;
+  right: 0; */
   margin: auto;
 }
 
@@ -216,7 +241,7 @@ label span:before {
 
 .reward {
   display: block;
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 700;
 }
 
@@ -239,6 +264,7 @@ label span:before {
 }
 
 .free {
+  width: 70%;
   background: #E1A84F;
   background: linear-gradient(90deg, rgba(225, 168, 79, 1) 0%, rgba(226, 169, 79, 1) 50%, rgba(225, 168, 79, 1) 100%);
   border-radius: 20px;
@@ -315,10 +341,14 @@ label span:before {
 
   .score-card {
     max-width: 480px;
-    top: 50px;
+    /* top: 50px; */
   }
 
   .score-card h3 {
+    font-size: 30px;
+  }
+
+  .score-card h3 b {
     font-size: 36px;
   }
 
@@ -343,7 +373,7 @@ label span:before {
   }
 
   .reward {
-    font-size: 30px;
+    font-size: 34px;
   }
 }
 
@@ -426,11 +456,11 @@ label span:before {
   }
 
   .banner-text {
-    top: 42%;
+    /* top: 42%; */
   }
 
   .banner-text h1 {
-    font-size: 48px;
+    font-size: 40px;
   }
 
 
@@ -448,9 +478,12 @@ label span:before {
   }
 
   label span {
-    height: 40px;
+    height: 35px;
+    font-size: 18px;
   }
-
+    .border-div {
+        padding: 5px 40px 5px 40px;
+    }
   .square-reward {
     padding: 10px 50px;
     width: 95%;
@@ -477,38 +510,198 @@ label span:before {
 }
 
 @media only screen and (max-width:991px) {
- .score-card {
-        max-width: 235px;
-        top: 15px;
-    }
-  .border-div {
-      padding: 10px 40px 10px 40px;
+  h3{
+    font-size: 18px;
   }
-      .free h4 {
-        font-size: 18px;
-    }
-    .ruppee {
-        font-size: 50px;
+  p{
+    font-size: 12px;
+  }
+  .score-card {
+    max-width: 235px;
+    /* top: 15px; */
+  }
+
+  .border-div {
+    padding: 10px 40px 10px 40px;
+  }
+  .free{
+    width: 100%;
+  }
+  .free h4 {
+    font-size: 16px;
+  }
+
+  .ruppee {
+    font-size: 38px;
+  }
+  .small{
+    font-size: 10px;
+  }
+    .score-card {
+      max-width: 200px;
+  }
+  .btn {
+        font-size: 12px;
     }
 }
 
 @media only screen and (max-width:767px) {
+  .btn {
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+
+  h3 {
+    font-size: 24px;
+  }
+
+  h3 b {
+    font-size: 28px;
+  }
+
+  .hide-mobile {
+    display: none;
+  }
+
+  .hide-desktop {
+    display: block;
+  }
+
+  header {
+    position: fixed;
+  }
+
+  .banner {
+    height: 100vh;
+    overflow: unset;
+  }
+
+  .mobile-img {
+    position: absolute;
+    bottom: 0;
+  }
+
+  .banner-text {
+    width: 94%;
+    text-align: center;
+    transform: unset ! IMPORTANT;
+    top: 15% !important;
+  }
+
   .banner-text .btn.start-btn {
-        font-size: 12px;
-        padding:5px 10px;
-    }
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
   .banner-text h1 {
-        font-size: 20px;
-    }
-    .banner-text p {
-        font-size: 12px;
-        margin: 0;
-    }
-        .banner-text .btn.start-btn {
-        margin-top: 10px;
-    }
+    font-size: 30px;
+  }
+
+  .banner-text p {
+    font-size: 13px;
+    margin: 0;
+    width: 100%;
+  }
+
+  .banner-text .btn.start-btn {
+    margin-top: 30px;
+  }
+
+  .qustions {
+    text-align: left;
+  }
+
+  .banner-text span.number {
+    font-size: 28px;
+  }
+
+  .qustions h3 {
+    font-size: 20px;
+  }
+
+  label span {
+    font-size: 15px;
+    padding: 5px 0px 5px 15px;
+
+  }
+
+  .free {
+    padding: 10px 25px;
+  }
+
+  .free h4 {
+    font-size: 20px;
+    font-weight: 700;
+  }
+
   .score-card {
-        max-width: unset;
-        position: unset;
-    }
+    max-width: unset;
+    position: unset !important;
+    transform: unset !important;
+    padding-bottom: 20px;
+
+  }
+
+  .border-div {
+    padding: 10px 20px;
+  }
+
+  .bottom-sec {
+    bottom: 23%;
+  }
+
+  .middle-sec {
+    top: 21%;
+  }
+
+  .middle-sec span {
+    font-size: 64px;
+  }
+
+  .result-page {
+    padding: 0 35px;
+    margin-top: 75px;
+    background: url(../img/footer-right.jpg) center;
+    position: relative;
+  }
+
+  .result-page::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: rgb(0 0 0 / 50%);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+
+  .square-reward {
+    position: unset !important;
+    width: 100%;
+    height: 100%;
+    /* margin-top: 20px; */
+    background: #653d23;
+    padding: 10px;
+
+  }
+
+  .square-reward .translate-middle-y {
+    transform: unset !important;
+    position: unset !important;
+  }
+
+  .score {
+    background: unset;
+  }
+
+  .share-instagram {
+    font-size: 16px;
+    padding: 10px 30px;
+  }
+
+  .small {
+    font-size: 11px;
+  }
 }
