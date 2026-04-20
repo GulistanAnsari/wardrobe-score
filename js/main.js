@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
   let current = 0;
   let slides = $(".slide");
 
@@ -20,12 +19,13 @@ $(document).ready(function () {
   }
 
   $("#show-q").click(function () {
+    $(".mobile-img").hide();
 
     $("input[type=radio]").prop("checked", false);
     $("#answer").text("00");
     $("#type").text("---------");
-    $("#reward").text("---------");
-    $("#ruppee").text("₹0"); 
+    // $("#reward").text("---------");
+    $("#ruppee").text("₹0");
     $("#error-msg").hide();
 
     current = 0;
@@ -37,7 +37,6 @@ $(document).ready(function () {
   });
 
   $("#next").click(function () {
-
     let selected = slides.eq(current).find("input:checked").length;
 
     if (selected === 0) {
@@ -59,7 +58,6 @@ $(document).ready(function () {
   });
 
   $("#result").click(function () {
-
     let selected = slides.eq(current).find("input:checked").length;
 
     if (selected === 0) {
@@ -77,39 +75,42 @@ $(document).ready(function () {
 
     let resultText = "---------";
     let rewardText = "---------";
-    let amountText = "₹0"; 
+    let amountText = "₹0";
 
     if (total >= 30 && total <= 49) {
       resultText = "Trend chaser";
-      rewardText = "Trend chaser reward";
-      amountText = "₹150";
-    } 
-    else if (total >= 50 && total <= 64) {
+      rewardText =
+        " You love what’s new and next. You move fast with trends, now imagine choosing pieces that stay just as relevant, wear after wear. ";
+      amountText = "₹500";
+    } else if (total >= 50 && total <= 64) {
       resultText = "Sale printer";
-      rewardText = "Sale printer reward";
-      amountText = "₹250";
-    } 
-    else if (total >= 65 && total <= 79) {
+      rewardText =
+        "You rarely miss a good deal. But not every deal earns a second wear. The next step is choosing pieces that stay in your wardrobe, not just your cart.";
+      amountText = "₹500";
+    } else if (total >= 65 && total <= 79) {
       resultText = "Balanced styler";
-      rewardText = "Balanced styler reward";
-      amountText = "₹350";
-    } 
-    else if (total >= 80 && total <= 100) {
+      rewardText =
+        "You strike a balance between style and practicality. You already choose well, now it’s about choosing pieces that go even further.";
+      amountText = "₹500";
+    } else if (total >= 80 && total <= 100) {
       resultText = "FAIR & SQUAR MAN";
-      rewardText = "Fair & Square reward";
+      rewardText =
+        "You choose consciously, valuing longevity and how your clothes are made. Style, with purpose, exactly how it should be.";
       amountText = "₹500";
     }
 
     $("#type").text(resultText);
     $("#reward").text(rewardText);
-    $("#ruppee").text(amountText); 
+    $("#ruppee").text(amountText);
 
-    $("html, body").animate({
-      scrollTop: $(".score").offset().top
-    }, 600);
+    $("html, body").animate(
+      {
+        scrollTop: $(".score").offset().top,
+      },
+      600,
+    );
 
     setTimeout(function () {
-
       $("input[type=radio]").prop("checked", false);
       current = 0;
 
@@ -119,12 +120,92 @@ $(document).ready(function () {
       $("#next").show();
       $("#result").hide();
       $("#prev").hide();
-
     }, 2000);
+    $(".banner").hide();
+    $(".result-page").show();
   });
 
   $("#share-instagram").click(function () {
-    window.open("https://www.instagram.com/", "_blank");
-  });
+    var btn = $(this);
+    btn.text("Generating...").prop("disabled", true);
 
+    html2canvas(document.querySelector(".card-div"), {
+      useCORS: false,
+      allowTaint: false,
+      scale: 3,
+      logging: false,
+    })
+      .then(function (capturedCanvas) {
+        // Build a 4:5 Instagram-ready canvas (1080x1350)
+        var igW = 1080;
+        var igH = 1350;
+        var igCanvas = document.createElement("canvas");
+        igCanvas.width = igW;
+        igCanvas.height = igH;
+        var ctx = igCanvas.getContext("2d");
+
+        // Fill background matching the score section gradient
+        var grad = ctx.createLinearGradient(0, 0, igW, igH);
+        grad.addColorStop(0, "#D8D1BF");
+        grad.addColorStop(1, "#D6CBB5");
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, igW, igH);
+
+        // Scale captured card-div to fit centered with padding
+        var padding = 80;
+        var maxW = igW - padding * 2;
+        var maxH = igH - padding * 2;
+        var scale = Math.min(
+          maxW / capturedCanvas.width,
+          maxH / capturedCanvas.height,
+        );
+        var drawW = capturedCanvas.width * scale;
+        var drawH = capturedCanvas.height * scale;
+        var drawX = (igW - drawW) / 2;
+        var drawY = (igH - drawH) / 2;
+        ctx.drawImage(capturedCanvas, drawX, drawY, drawW, drawH);
+
+        igCanvas.toBlob(function (blob) {
+          if (!blob) {
+            alert("Could not generate image. Please try again.");
+            btn.text("SHARE ON INSTAGRAM").prop("disabled", false);
+            return;
+          }
+
+          var file = new File([blob], "wardrobe-score.png", {
+            type: "image/png",
+          });
+
+          if (navigator.canShare && navigator.canShare({ files: [file] })) {
+            // Mobile: native share sheet — user can pick Instagram directly
+            navigator
+              .share({
+                files: [file],
+                title: "My Wardrobe Score",
+                text: "Check out my Wardrobe Score!",
+              })
+              .then(function () {
+                btn.text("SHARE ON INSTAGRAM").prop("disabled", false);
+              })
+              .catch(function (err) {
+                if (err.name !== "AbortError") {
+                  alert("Sharing failed: " + err.message);
+                }
+                btn.text("SHARE ON INSTAGRAM").prop("disabled", false);
+              });
+          } else {
+            alert(
+              "To share on Instagram, please open this page on your mobile device.",
+            );
+            btn.text("SHARE ON INSTAGRAM").prop("disabled", false);
+          }
+        }, "image/png");
+      })
+      .catch(function (err) {
+        alert(
+          "Image generation failed: " + (err ? err.message : "Unknown error"),
+        );
+        btn.text("SHARE ON INSTAGRAM").prop("disabled", false);
+      });
+  });
 });
