@@ -5,6 +5,7 @@ body {
   font-style: normal;
   color: #42210b;
   letter-spacing: 1px;
+  font-size: 15px;
 }
 
 h1,
@@ -81,6 +82,9 @@ nav img {
 
 .banner-text p {
   font-size: 26px;
+}
+.banner-text p small{
+  font-size: 18px;
 }
 
 .banner-text .btn.start-btn {
@@ -218,12 +222,16 @@ label span:before {
 }
 
 .bottom-sec {
-  bottom: 23%;
+  bottom: 20%;
+}
+.bottom-sec h3{
+  text-transform: unset;
 }
 
 .bottom-sec p {
   font-size: 14px;
   font-weight: 500;
+  padding: 0 15px;
 }
 
 .square-reward {
@@ -241,8 +249,9 @@ label span:before {
 
 .reward {
   display: block;
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 700;
+  margin-bottom: 5px;
 }
 
 .square-reward p a {
@@ -326,7 +335,9 @@ label span:before {
   .banner-text p {
     font-size: 28px;
   }
-
+  .banner-text p small{
+    font-size: 20px;
+  }
   .qustions h3 {
     font-size: 36px;
   }
@@ -425,6 +436,9 @@ label span:before {
   .banner-text p {
     font-size: 23px;
   }
+   .banner-text p small{
+    font-size: 16px;
+  }
 
   .score-card {
     max-width: 280px;
@@ -466,6 +480,9 @@ label span:before {
 
   .banner-text p {
     font-size: 20px;
+  }
+   .banner-text p small{
+    font-size: 15px;
   }
 
   .banner-text .btn.start-btn {
@@ -602,6 +619,9 @@ label span:before {
     margin: 0;
     width: 100%;
   }
+   .banner-text p small{
+    font-size: 11px;
+  }
 
   .banner-text .btn.start-btn {
     margin-top: 30px;
@@ -638,20 +658,22 @@ label span:before {
     max-width: unset;
     position: unset !important;
     transform: unset !important;
-    padding-bottom: 20px;
+    padding: 15px 0;
 
   }
 
   .border-div {
     padding: 10px 20px;
   }
-
+.top-sec {
+    top: 6%;
+}
   .bottom-sec {
     bottom: 23%;
   }
 
   .middle-sec {
-    top: 21%;
+    top: 22%;
   }
 
   .middle-sec span {
@@ -680,10 +702,11 @@ label span:before {
   .square-reward {
     position: unset !important;
     width: 100%;
-    height: 100%;
+    height: auto;
     /* margin-top: 20px; */
     background: #653d23;
-    padding: 10px;
+    padding: 10px 5px;
+    margin-bottom: 20px;
 
   }
 
@@ -699,9 +722,27 @@ label span:before {
   .share-instagram {
     font-size: 16px;
     padding: 10px 30px;
+    background: #653d23;
+    border: 1px solid #653d23;
+  }
+  .share-instagram:hover{
+    background: #fff;
+    border: 1px solid #fff;
+    color: #653d23;
   }
 
   .small {
-    font-size: 11px;
+    font-size: 10px;
+  }
+}
+
+@media only screen and (max-width:412px){
+  .middle-sec {
+        top: 24%;
+    }
+}
+@media only screen and (max-width:320px){
+  .result-page {
+      padding: 0 10px;
   }
 }
