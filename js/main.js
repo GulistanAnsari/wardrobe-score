@@ -24,7 +24,7 @@ $(document).ready(function () {
     $("input[type=radio]").prop("checked", false);
     $("#answer").text("00");
     $("#type").text("---------");
-    // $("#reward").text("---------");
+    $("#reward").text("---------");
     $("#ruppee").text("₹0");
     $("#error-msg").hide();
 
@@ -78,22 +78,22 @@ $(document).ready(function () {
     let amountText = "₹0";
 
     if (total >= 30 && total <= 49) {
-      resultText = "Trend chaser";
+      resultText = "Trend Chaser";
       rewardText =
         " You love what’s new and next. You move fast with trends, now imagine choosing pieces that stay just as relevant, wear after wear. ";
       amountText = "₹500";
     } else if (total >= 50 && total <= 64) {
-      resultText = "Sale printer";
+      resultText = "Sale Sprinter";
       rewardText =
         "You rarely miss a good deal. But not every deal earns a second wear. The next step is choosing pieces that stay in your wardrobe, not just your cart.";
       amountText = "₹500";
     } else if (total >= 65 && total <= 79) {
-      resultText = "Balanced styler";
+      resultText = "Balanced Styler";
       rewardText =
         "You strike a balance between style and practicality. You already choose well, now it’s about choosing pieces that go even further.";
       amountText = "₹500";
     } else if (total >= 80 && total <= 100) {
-      resultText = "FAIR & SQUAR MAN";
+      resultText = "Fair & Square Man";
       rewardText =
         "You choose consciously, valuing longevity and how your clothes are made. Style, with purpose, exactly how it should be.";
       amountText = "₹500";
@@ -124,6 +124,17 @@ $(document).ready(function () {
     $(".banner").hide();
     $(".result-page").show();
   });
+
+  if ($(window).width() > 1366) {
+    $("#result").click(function () {
+      $("html, body").animate(
+        {
+          scrollTop: $(".score").offset().top + 50,
+        },
+        600,
+      );
+    });
+  }
 
   $("#share-instagram").click(function () {
     var btn = $(this);
@@ -176,8 +187,50 @@ $(document).ready(function () {
             type: "image/png",
           });
 
-          if (navigator.canShare && navigator.canShare({ files: [file] })) {
-            // Mobile: native share sheet — user can pick Instagram directly
+          var ua = navigator.userAgent || "";
+          var isIOS = /iphone|ipad|ipod/i.test(ua);
+          var isAndroidMobile =
+            /android/i.test(ua) &&
+            ("ontouchstart" in window || navigator.maxTouchPoints > 0);
+          var isMobile = isIOS || isAndroidMobile;
+
+          if (isIOS) {
+            // iOS Safari: show image in an in-page overlay so user can long-press → Save to Photos
+            var dataUrl = igCanvas.toDataURL("image/png");
+
+            // Remove any previous overlay
+            $("#ios-share-overlay").remove();
+
+            var overlay = $(
+              '<div id="ios-share-overlay" style="' +
+                "position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.92);" +
+                "display:flex;flex-direction:column;align-items:center;justify-content:center;" +
+                'padding:20px;box-sizing:border-box;overflow-y:auto;">' +
+                '<p style="color:#fff;font-family:sans-serif;font-size:15px;text-align:center;margin-bottom:14px;">' +
+                "Press &amp; hold the image, then tap <strong>Save to Photos</strong>.<br>" +
+                "Then open Instagram and share from your camera roll.</p>" +
+                '<img src="' +
+                dataUrl +
+                '" style="max-width:100%;max-height:65vh;border-radius:8px;display:block;" />' +
+                '<button id="ios-overlay-close" style="margin-top:18px;padding:10px 28px;' +
+                'background:#fff;color:#42210b;border:none;border-radius:24px;font-size:15px;font-family:sans-serif;cursor:pointer;">' +
+                "Close</button>" +
+                "</div>",
+            );
+
+            $("body").append(overlay);
+
+            $("#ios-overlay-close").on("click", function () {
+              $("#ios-share-overlay").remove();
+            });
+
+            btn.text("SHARE ON INSTAGRAM").prop("disabled", false);
+          } else if (
+            isAndroidMobile &&
+            navigator.canShare &&
+            navigator.canShare({ files: [file] })
+          ) {
+            // Android: native share sheet
             navigator
               .share({
                 files: [file],
@@ -194,9 +247,20 @@ $(document).ready(function () {
                 btn.text("SHARE ON INSTAGRAM").prop("disabled", false);
               });
           } else {
+            // Desktop: alert + auto-download the image
             alert(
-              "To share on Instagram, please open this page on your mobile device.",
+              "Please open this website on mobile to share directly on Instagram.\n\nThe image will now be downloaded - you can then share it on Instagram manually.",
             );
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement("a");
+            a.href = url;
+            a.download = "wardrobe-score.png";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            setTimeout(function () {
+              URL.revokeObjectURL(url);
+            }, 1000);
             btn.text("SHARE ON INSTAGRAM").prop("disabled", false);
           }
         }, "image/png");
