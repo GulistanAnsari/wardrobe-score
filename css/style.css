@@ -19,11 +19,55 @@ h6,
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 
 .hide-desktop {
   display: none;
+}
+
+/* Desktop Warning Overlay */
+#desktop-warning {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  #desktop-warning {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    inset: 0;
+    background: #fff;
+    z-index: 9999;
+  }
+
+  .desktop-warning-box {
+    text-align: center;
+    padding: 40px 30px;
+    max-width: 420px;
+  }
+
+  .desktop-warning-box img {
+    max-width: 160px;
+    margin-bottom: 24px;
+  }
+
+  .desktop-warning-box h2 {
+    font-size: 2rem;
+    color: #42210b;
+    margin-bottom: 12px;
+  }
+
+  .desktop-warning-box p {
+    font-size: 1.1rem;
+    color: #42210b;
+    margin-bottom: 16px;
+  }
+
+  .desktop-warning-box span {
+    font-size: 3rem;
+  }
 }
 
 .btn {
@@ -72,18 +116,19 @@ nav img {
   /* top: 50%; */
   /* bottom: 0; */
   /* transform: translateY(-50%); */
-  width: 50%;
+  width: 45%;
 }
 
 .banner-text h1 {
-  font-size: 75px;
+  font-size: 66px;
   font-weight: 400;
 }
 
 .banner-text p {
   font-size: 26px;
 }
-.banner-text p small{
+
+.banner-text p small {
   font-size: 18px;
 }
 
@@ -97,9 +142,6 @@ nav img {
 .banner-text span.number {
   font-size: 42px;
 }
-
-
-
 
 form {
   display: flex;
@@ -122,23 +164,23 @@ label input {
   left: -9999px;
 }
 
-label input:checked+span {
+label input:checked + span {
   border: 1px solid #42210b;
 }
 
-label input:checked+span:before {
+label input:checked + span:before {
   box-shadow: inset 0 0 0 8px #42210b;
 }
 
 label span {
   display: flex;
   align-items: center;
-  padding: 5px 0px 5px 30px;
+  padding: 5px 30px 5px 30px;
   border-radius: 0;
   transition: 0.25s ease;
-  width: 100%;
+  width: auto;
   margin-bottom: 15px;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 300;
   height: 50px;
   /* border:1px solid #ded8c8; */
@@ -155,7 +197,7 @@ label span:before {
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  margin-right: 0.600em;
+  margin-right: 0.6em;
   transition: 0.25s ease;
   box-shadow: inset 0 0 0 2px #42210b;
 }
@@ -182,8 +224,12 @@ label span:before {
 }
 
 .score {
-  background: #D8D1BF;
-  background: linear-gradient(155deg, rgba(216, 209, 191, 1) 0%, rgba(214, 203, 181, 1) 100%);
+  background: #d8d1bf;
+  background: linear-gradient(
+    155deg,
+    rgba(216, 209, 191, 1) 0%,
+    rgba(214, 203, 181, 1) 100%
+  );
   position: relative;
 }
 
@@ -213,18 +259,22 @@ label span:before {
 }
 
 .middle-sec {
-  top: 23%;
+  top: 19%;
+  width: 75%;
+  margin: auto;
 }
 
 .middle-sec span {
-  font-size: 62px;
+  font-size: 58px;
   color: #fff;
+  top: 21%;
 }
 
 .bottom-sec {
-  bottom: 20%;
+  bottom: 90px;
 }
-.bottom-sec h3{
+
+.bottom-sec h3 {
   text-transform: unset;
 }
 
@@ -263,19 +313,24 @@ label span:before {
   border: 1px solid #bc8943;
   border-radius: 20px;
   display: inline-block;
-  padding: 20px 60px 20px 60px;
+  padding: 15px 60px 15px 60px;
 }
 
 .ruppee {
   display: block;
-  font-size: 80px;
+  font-size: 70px;
   line-height: 1;
 }
 
 .free {
   width: 70%;
-  background: #E1A84F;
-  background: linear-gradient(90deg, rgba(225, 168, 79, 1) 0%, rgba(226, 169, 79, 1) 50%, rgba(225, 168, 79, 1) 100%);
+  background: #e1a84f;
+  background: linear-gradient(
+    90deg,
+    rgba(225, 168, 79, 1) 0%,
+    rgba(226, 169, 79, 1) 50%,
+    rgba(225, 168, 79, 1) 100%
+  );
   border-radius: 20px;
   display: inline-block;
   padding: 10px 35px;
@@ -294,13 +349,14 @@ label span:before {
   top: 2%;
   bottom: 1%;
   border-radius: 20px;
-  opacity: 0.7
+  opacity: 0.7;
 }
 
 .free h4 {
   font-size: 26px;
   color: #42210b;
   font-weight: 600;
+  text-transform: uppercase;
 }
 
 .free p {
@@ -311,9 +367,11 @@ label span:before {
   width: 20px;
 }
 
-
-
-
+.follow {
+  font-size: 10px;
+  margin-top: 5px;
+  display: block;
+}
 
 @media (min-width: 1601px) and (max-width: 1920px) {
   p {
@@ -335,9 +393,11 @@ label span:before {
   .banner-text p {
     font-size: 28px;
   }
-  .banner-text p small{
+
+  .banner-text p small {
     font-size: 20px;
   }
+
   .qustions h3 {
     font-size: 36px;
   }
@@ -368,15 +428,15 @@ label span:before {
   }
 
   .middle-sec span {
-    font-size: 76px;
+    font-size: 68px;
   }
 
   .bottom-sec p {
-    font-size: 16px;
+    font-size: 15px;
   }
 
   .ruppee {
-    font-size: 100px;
+    font-size: 90px;
   }
 
   .free h4 {
@@ -408,7 +468,7 @@ label span:before {
   }
 
   .ruppee {
-    font-size: 62px;
+    font-size: 60px;
   }
 
   .free h4 {
@@ -436,7 +496,8 @@ label span:before {
   .banner-text p {
     font-size: 23px;
   }
-   .banner-text p small{
+
+  .banner-text p small {
     font-size: 16px;
   }
 
@@ -455,12 +516,11 @@ label span:before {
   }
 
   .ruppee {
-    font-size: 60px;
-
+    font-size: 54px;
   }
 }
 
-@media only screen and (max-width:1024px) {
+@media only screen and (max-width: 1024px) {
   h3 {
     font-size: 20px;
   }
@@ -477,16 +537,15 @@ label span:before {
     font-size: 40px;
   }
 
-
   .banner-text p {
     font-size: 20px;
   }
-   .banner-text p small{
+
+  .banner-text p small {
     font-size: 15px;
   }
 
   .banner-text .btn.start-btn {
-
     margin-top: 36px;
   }
 
@@ -498,9 +557,11 @@ label span:before {
     height: 35px;
     font-size: 18px;
   }
-    .border-div {
-        padding: 5px 40px 5px 40px;
-    }
+
+  .border-div {
+    padding: 5px 40px 5px 40px;
+  }
+
   .square-reward {
     padding: 10px 50px;
     width: 95%;
@@ -508,31 +569,27 @@ label span:before {
   }
 
   .middle-sec span {
-    font-size: 42px;
+    font-size: 38px;
   }
 
   .score-card {
     max-width: 240px;
   }
 
-  .bottom-sec {
-    bottom: 20%;
-  }
-
   .bottom-sec p {
     font-size: 12px;
   }
-
-
 }
 
-@media only screen and (max-width:991px) {
-  h3{
+@media only screen and (max-width: 991px) {
+  h3 {
     font-size: 18px;
   }
-  p{
+
+  p {
     font-size: 12px;
   }
+
   .score-card {
     max-width: 235px;
     /* top: 15px; */
@@ -541,28 +598,33 @@ label span:before {
   .border-div {
     padding: 10px 40px 10px 40px;
   }
-  .free{
+
+  .free {
     width: 100%;
   }
+
   .free h4 {
     font-size: 16px;
   }
 
   .ruppee {
-    font-size: 38px;
+    font-size: 36px;
   }
-  .small{
+
+  .small {
     font-size: 10px;
   }
-    .score-card {
-      max-width: 200px;
+
+  .score-card {
+    max-width: 200px;
   }
+
   .btn {
-        font-size: 12px;
-    }
+    font-size: 12px;
+  }
 }
 
-@media only screen and (max-width:767px) {
+@media only screen and (max-width: 767px) {
   .btn {
     font-size: 13px;
     padding: 8px 10px;
@@ -588,6 +650,10 @@ label span:before {
     position: fixed;
   }
 
+  nav img {
+    width: 40px;
+  }
+
   .banner {
     height: 100vh;
     overflow: unset;
@@ -601,7 +667,7 @@ label span:before {
   .banner-text {
     width: 94%;
     text-align: center;
-    transform: unset ! IMPORTANT;
+    transform: unset !important;
     top: 15% !important;
   }
 
@@ -611,7 +677,7 @@ label span:before {
   }
 
   .banner-text h1 {
-    font-size: 30px;
+    font-size: 24px;
   }
 
   .banner-text p {
@@ -619,7 +685,8 @@ label span:before {
     margin: 0;
     width: 100%;
   }
-   .banner-text p small{
+
+  .banner-text p small {
     font-size: 11px;
   }
 
@@ -641,8 +708,7 @@ label span:before {
 
   label span {
     font-size: 15px;
-    padding: 5px 0px 5px 15px;
-
+    padding: 5px 15px 5px 15px;
   }
 
   .free {
@@ -659,30 +725,35 @@ label span:before {
     position: unset !important;
     transform: unset !important;
     padding: 15px 0;
-
   }
 
   .border-div {
-    padding: 10px 20px;
-  }
-.top-sec {
-    top: 6%;
-}
-  .bottom-sec {
-    bottom: 23%;
+    padding: 10px 40px;
   }
 
-  .middle-sec {
-    top: 22%;
+  .ruppee {
+    font-size: 44px;
   }
+
+  .top-sec {
+    top: 6%;
+  }
+
+  .bottom-sec {
+    bottom: 80px;
+  }
+
+  /* .middle-sec {
+    top: 22%;
+  }*/
 
   .middle-sec span {
-    font-size: 64px;
+    font-size: 52px;
   }
 
   .result-page {
-    padding: 0 35px;
-    margin-top: 75px;
+    padding: 0 30px;
+    margin-top: 55px;
     background: url(../img/footer-right.jpg) center;
     position: relative;
   }
@@ -703,11 +774,10 @@ label span:before {
     position: unset !important;
     width: 100%;
     height: auto;
-    /* margin-top: 20px; */
-    background: #653d23;
+    background: rgb(21 35 68 / 90%);
     padding: 10px 5px;
     margin-bottom: 20px;
-
+    border: 1px solid #fff;
   }
 
   .square-reward .translate-middle-y {
@@ -722,13 +792,14 @@ label span:before {
   .share-instagram {
     font-size: 16px;
     padding: 10px 30px;
-    background: #653d23;
-    border: 1px solid #653d23;
+    background: #e1a84f;
+    border: 1px solid #e1a84f;
   }
-  .share-instagram:hover{
-    background: #fff;
-    border: 1px solid #fff;
-    color: #653d23;
+
+  .share-instagram:hover {
+    background: #e1a84f;
+    border: 1px solid #e1a84f;
+    color: #fff;
   }
 
   .small {
@@ -736,13 +807,14 @@ label span:before {
   }
 }
 
-@media only screen and (max-width:412px){
-  .middle-sec {
+@media only screen and (max-width: 412px) {
+  /* .middle-sec {
         top: 24%;
-    }
+    } */
 }
-@media only screen and (max-width:320px){
+
+@media only screen and (max-width: 320px) {
   .result-page {
-      padding: 0 10px;
+    padding: 0 10px;
   }
 }
